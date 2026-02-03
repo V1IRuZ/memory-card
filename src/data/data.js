@@ -1,0 +1,80 @@
+export const data = [
+  {
+    name: "Lord of the Rings",
+    searchWord: "lotr",
+    id: crypto.randomUUID(),
+    imgSrc: "",
+  },
+  {
+    name: "Dumb and Dumber",
+    searchWord: "dumb and dumber",
+    id: crypto.randomUUID(),
+    imgSrc: "",
+  },
+  {
+    name: "Titanic",
+    searchWord: "titanic",
+    id: crypto.randomUUID(),
+    imgSrc: "",
+  },
+  {
+    name: "Harry Potter",
+    searchWord: "harry potter",
+    id: crypto.randomUUID(),
+    imgSrc: "",
+  },
+  {
+    name: "Star Wars",
+    searchWord: "star wars",
+    id: crypto.randomUUID(),
+    imgSrc: "",
+  },
+  {
+    name: "Naked Gun",
+    searchWord: "naked gun",
+    id: crypto.randomUUID(),
+    imgSrc: "",
+  },
+  {
+    name: "Indiana Jones",
+    searchWord: "indiana jones",
+    id: crypto.randomUUID(),
+    imgSrc: "",
+  },
+  {
+    name: "Avengers",
+    searchWord: "avengers",
+    id: crypto.randomUUID(),
+    imgSrc: "",
+  },
+  {
+    name: "Forrest Gump",
+    searchWord: "forrest gump",
+    id: crypto.randomUUID(),
+    imgSrc: "",
+  },
+  {
+    name: "Matrix",
+    searchWord: "matrix",
+    id: crypto.randomUUID(),
+    imgSrc: "",
+  },
+  {
+    name: "Lord of the rings",
+    searchWord: "lort",
+    id: crypto.randomUUID(),
+    imgSrc: "",
+  },
+  {
+    name: "Terminator",
+    searchWord: "terminator",
+    id: crypto.randomUUID(),
+    imgSrc: "",
+  },
+  {
+    name: "Back to the Future",
+    searchWord: "back to the future",
+    id: crypto.randomUUID(),
+    imgSrc: "",
+  },
+];
