@@ -38,10 +38,33 @@ export default function GameBoard() {
     };
   }, []);
 
+  const handleShuffle = (pokemon, array, random = Math.random) => {
+    let shuffledArray = array.map((item) =>
+      item.id === pokemon.id ? { ...item, selected: true } : { ...item },
+    );
+    let currentIndex = shuffledArray.length;
+
+    while (currentIndex != 0) {
+      let randomIndex = Math.floor(random() * currentIndex);
+      currentIndex--;
+
+      [shuffledArray[currentIndex], shuffledArray[randomIndex]] = [
+        shuffledArray[randomIndex],
+        shuffledArray[currentIndex],
+      ];
+    }
+
+    setData(shuffledArray);
+  };
+
   return (
     <div className="game-board">
-      {data.map((item) => (
-        <Card data={item} />
+      {data.map((pokemon) => (
+        <Card
+          data={pokemon}
+          setData={setData}
+          onShuffle={() => handleShuffle(pokemon, data)}
+        />
       ))}
     </div>
   );
