@@ -1,12 +1,15 @@
-import { useState } from 'react'
-import './App.css'
+import GameBoard from "./components/GameBoard";
+import "./App.css";
 
-function App() {
+
+export default function App() {
+
   return (
-    <>
-
-    </>
-  )
+    <div className="page">
+      <header>
+        <h1>Memory Card</h1>
+      </header>
+      <GameBoard />
+    </div>
+  );
 }
-
-export default App
