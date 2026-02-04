@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { initialData } from "../data/data";
 import Card from "./Card";
+import "../styles/GameBoard.css";
 
 export default function GameBoard() {
   const [data, setData] = useState(initialData);
@@ -38,7 +39,7 @@ export default function GameBoard() {
   }, []);
 
   return (
-    <div className="card-board">
+    <div className="game-board">
       {data.map((item) => (
         <Card data={item} />
       ))}
