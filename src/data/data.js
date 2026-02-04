@@ -54,7 +54,7 @@ export const initialData = [
     selected: false,
   },
   {
-    name: "Hitmonchan",
+    name: "Scyther",
     imgSrc: null,
     id: crypto.randomUUID(),
     selected: false,
