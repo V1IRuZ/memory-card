@@ -3,7 +3,7 @@ import { initialData } from "../data/data";
 import Card from "./Card";
 import "../styles/GameBoard.css";
 
-export default function GameBoard() {
+export default function GameBoard({ setScore }) {
   const [data, setData] = useState(initialData);
 
   const fetchPokemon = async (pokemon) => {
@@ -39,22 +39,39 @@ export default function GameBoard() {
   }, []);
 
   const handleShuffle = (pokemon, array, random = Math.random) => {
-    let shuffledArray = array.map((item) =>
-      item.id === pokemon.id ? { ...item, selected: true } : { ...item },
-    );
-    let currentIndex = shuffledArray.length;
+    
+    const shuffle = () => {
+      let shuffledArray = array.map((item) =>
+        item.id === pokemon.id ? { ...item, selected: true } : { ...item },
+      );
+      let currentIndex = shuffledArray.length;
 
-    while (currentIndex != 0) {
-      let randomIndex = Math.floor(random() * currentIndex);
-      currentIndex--;
+      while (currentIndex != 0) {
+        let randomIndex = Math.floor(random() * currentIndex);
+        currentIndex--;
 
-      [shuffledArray[currentIndex], shuffledArray[randomIndex]] = [
-        shuffledArray[randomIndex],
-        shuffledArray[currentIndex],
-      ];
-    }
+        [shuffledArray[currentIndex], shuffledArray[randomIndex]] = [
+          shuffledArray[randomIndex],
+          shuffledArray[currentIndex],
+        ];
+      }
 
-    setData(shuffledArray);
+      setData(shuffledArray);
+    };
+
+    const validateSelectedCard = () => {
+      if (pokemon.selected) {
+        const resetData = data.map((item) => ({ ...item, selected: false }));
+        setData(resetData);
+        setScore(0);
+        return;
+      }
+
+      shuffle();
+      setScore((score) => score + 1);
+    };
+
+    validateSelectedCard();
   };
 
   return (
