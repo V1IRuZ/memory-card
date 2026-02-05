@@ -44,8 +44,15 @@ header {
   margin: 0 auto;
   padding: min(5%, 24px);
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   width: var(--page-width);
+}
+
+.high-score {
+  display: grid;
+  grid-template-columns: 250px 50px;
+  justify-content: center;
 }
 
 .score {
