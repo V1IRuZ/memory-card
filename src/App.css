@@ -12,7 +12,8 @@ body {
   background-color: #343a40;
 }
 
-.page {
+.page { 
+  --page-width: clamp(320px, 100%, 1920px); 
   font-family:
     "Pokemon Solid",
     system-ui,
@@ -30,11 +31,30 @@ body {
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  width: clamp(320px, 100%, 1920px);
+  width: var(--page-width);
   min-height: 100vh;
   color: #f0c808;
   letter-spacing: 6px;
   text-shadow:
     3px 3px 3px #086788,
     -3px -3px 3px #086788;
+}
+
+header {
+  margin: 0 auto;
+  padding: min(5%, 24px);
+  display: flex;
+  justify-content: space-evenly;
+  width: var(--page-width);
+}
+
+.score {
+  display: grid;
+  grid-template-columns: 160px 50px;
+  justify-content: center;
+}
+
+header span {
+  font-size: 2rem;
+  place-self: end;
 }
