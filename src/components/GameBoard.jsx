@@ -3,7 +3,12 @@ import { initialData } from "../data/data";
 import Card from "./Card";
 import "../styles/GameBoard.css";
 
-export default function GameBoard({ setScore }) {
+export default function GameBoard({
+  score,
+  setScore,
+  highScore,
+  setHighScore,
+}) {
   const [data, setData] = useState(initialData);
 
   const fetchPokemon = async (pokemon) => {
@@ -39,7 +44,6 @@ export default function GameBoard({ setScore }) {
   }, []);
 
   const handleShuffle = (pokemon, array, random = Math.random) => {
-    
     const shuffle = () => {
       let shuffledArray = array.map((item) =>
         item.id === pokemon.id ? { ...item, selected: true } : { ...item },
@@ -59,10 +63,18 @@ export default function GameBoard({ setScore }) {
       setData(shuffledArray);
     };
 
+    const validateHighScore = () => {
+      if (score <= highScore) {
+        return;
+      }
+      setHighScore(score);
+    };
+
     const validateSelectedCard = () => {
       if (pokemon.selected) {
         const resetData = data.map((item) => ({ ...item, selected: false }));
         setData(resetData);
+        validateHighScore();
         setScore(0);
         return;
       }
