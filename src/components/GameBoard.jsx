@@ -18,7 +18,7 @@ export default function GameBoard({
     const json = await response.json();
     const rawName = json.name;
     const name = rawName[0].toUpperCase() + rawName.slice(1);
-    const image = json.sprites.front_default;
+    const image = json.sprites.other["official-artwork"].front_default;
 
     return {
       name,
