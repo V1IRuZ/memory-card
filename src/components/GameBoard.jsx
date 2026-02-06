@@ -11,23 +11,48 @@ export default function GameBoard({
 }) {
   const [data, setData] = useState(initialData);
 
-  const fetchPokemon = async (pokemon) => {
-    const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}/`;
+  const fetchPokemon = async (pokemonId) => {
+    const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}/`;
     const response = await fetch(url, { mode: "cors" });
     const json = await response.json();
-    const source = json.sprites.front_default;
-    return source;
+    const rawName = json.name;
+    const name = rawName[0].toUpperCase() + rawName.slice(1);
+    const image = json.sprites.front_default;
+
+    return {
+      name,
+      image,
+    };
   };
 
   useEffect(() => {
     let ignore = false;
+    const maxId = 151;
+
+    const usedIds = new Set();
+
+    const randomIds = data.map(() => {
+      let id;
+
+      do {
+        id = Math.floor(Math.random() * maxId);
+      } while (usedIds.has(id))
+
+        usedIds.add(id);
+        return id;
+    })
 
     const fetchAllPokemons = async () => {
-      const results = await Promise.all(
-        data.map(async (item) => {
-          const image = await fetchPokemon(item.name);
 
-          return { ...item, imgSrc: image };
+      const results = await Promise.all(
+        data.map(async (item, index) => {
+          const pokemonData = await fetchPokemon(randomIds[index]);
+
+          return {
+            ...item,
+            name: pokemonData.name,
+            imgSrc: pokemonData.image,
+          };
         }),
       );
 
