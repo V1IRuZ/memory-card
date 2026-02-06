@@ -10,6 +10,7 @@ export default function GameBoard({
   setHighScore,
 }) {
   const [data, setData] = useState(initialData);
+  const [round, setRound] = useState(0);
 
   const fetchPokemon = async (pokemonId) => {
     const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}/`;
@@ -66,10 +67,11 @@ export default function GameBoard({
     return () => {
       ignore = true;
     };
-  }, []);
+  }, [round]);
 
-  const handleShuffle = (pokemon, array, random = Math.random) => {
-    const shuffle = () => {
+  const handleShuffle = (pokemon, random = Math.random) => {
+
+    const getShuffledData = (array) => {
       let shuffledArray = array.map((item) =>
         item.id === pokemon.id ? { ...item, selected: true } : { ...item },
       );
@@ -85,7 +87,8 @@ export default function GameBoard({
         ];
       }
 
-      setData(shuffledArray);
+      return shuffledArray
+      
     };
 
     const validateHighScore = () => {
@@ -96,15 +99,27 @@ export default function GameBoard({
     };
 
     const validateSelectedCard = () => {
+      const BONUS = 5;
+      const resetData = data.map((item) => ({ ...item, selected: false }));
+      
       if (pokemon.selected) {
-        const resetData = data.map((item) => ({ ...item, selected: false }));
         setData(resetData);
         validateHighScore();
         setScore(0);
         return;
       }
+      
+      const shuffledData = getShuffledData(data);
+      const allSelected = shuffledData.every((item) => item.selected);
+      
+      if (allSelected) {
+        setScore((score) => score + BONUS)
+        setData(resetData);
+        setRound(rounds => rounds + 1);
+        return
+      }
 
-      shuffle();
+      setData(shuffledData);
       setScore((score) => score + 1);
     };
 
@@ -117,7 +132,7 @@ export default function GameBoard({
         <Card
           data={pokemon}
           setData={setData}
-          onShuffle={() => handleShuffle(pokemon, data)}
+          onShuffle={() => handleShuffle(pokemon)}
         />
       ))}
     </div>
