@@ -1,7 +1,6 @@
 .game-board {
   --gap-spacing: 16px;
   --main-padding: min(5%, 24px);
-  border: 2px solid black;
   width: clamp(320px, 100%, 1440px);
   display: grid;
   gap: var(--gap-spacing);
@@ -11,12 +10,19 @@
 }
 
 .card {
-  background-color: #c5283d;
+  cursor: pointer;
+  background: linear-gradient(180deg, #c5283d, white) ; 
+  border: 5px solid #086788;
   border-radius: 30px;
   display: grid;
   justify-content: center;
   align-items: center;
   grid-template-rows: 100px 1fr;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .card h1 {
