@@ -133,6 +133,7 @@ export default function GameBoard({
           data={pokemon}
           setData={setData}
           onShuffle={() => handleShuffle(pokemon)}
+          key={pokemon.id}
         />
       ))}
     </div>
