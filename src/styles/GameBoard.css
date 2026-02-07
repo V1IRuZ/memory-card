@@ -1,4 +1,5 @@
 .game-board {
+  --blue: #086788;
   --gap-spacing: 16px;
   --main-padding: min(5%, 24px);
   width: clamp(320px, 100%, 1440px);
@@ -11,8 +12,8 @@
 
 .card {
   cursor: pointer;
-  background: linear-gradient(180deg, #c5283d, white) ; 
-  border: 5px solid #086788;
+  background: linear-gradient(180deg, #c5283d, white);
+  border: 5px solid var(--blue);
   border-radius: 30px;
   display: grid;
   justify-content: center;
@@ -34,4 +35,32 @@
 .card img {
   width: 200px;
   height: auto;
+}
+
+.loading {
+  min-width: 100%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  border: 5px solid #f0c808;
+  border-radius: 50%;
+  border-bottom-color: var(--blue);
+  animation: Spin 1s infinite;
+}
+
+@keyframes Spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
