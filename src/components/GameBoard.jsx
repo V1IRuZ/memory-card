@@ -11,6 +11,7 @@ export default function GameBoard({
 }) {
   const [data, setData] = useState(initialData);
   const [round, setRound] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchPokemon = async (pokemonId) => {
     const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}/`;
@@ -37,28 +38,37 @@ export default function GameBoard({
 
       do {
         id = Math.floor(Math.random() * maxId);
-      } while (usedIds.has(id))
+      } while (usedIds.has(id));
 
-        usedIds.add(id);
-        return id;
-    })
+      usedIds.add(id);
+      return id;
+    });
 
     const fetchAllPokemons = async () => {
+      setIsLoading(true);
 
-      const results = await Promise.all(
-        data.map(async (item, index) => {
-          const pokemonData = await fetchPokemon(randomIds[index]);
+      try {
+        const results = await Promise.all(
+          data.map(async (item, index) => {
+            const pokemonData = await fetchPokemon(randomIds[index]);
 
-          return {
-            ...item,
-            name: pokemonData.name,
-            imgSrc: pokemonData.image,
-          };
-        }),
-      );
+            return {
+              ...item,
+              name: pokemonData.name,
+              imgSrc: pokemonData.image,
+            };
+          }),
+        );
 
-      if (!ignore) {
-        setData(results);
+        if (!ignore) {
+          setData(results);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        if (!ignore) {
+          setIsLoading(false);
+        }
       }
     };
 
@@ -70,7 +80,6 @@ export default function GameBoard({
   }, [round]);
 
   const handleShuffle = (pokemon, random = Math.random) => {
-
     const getShuffledData = (array) => {
       let shuffledArray = array.map((item) =>
         item.id === pokemon.id ? { ...item, selected: true } : { ...item },
@@ -87,8 +96,7 @@ export default function GameBoard({
         ];
       }
 
-      return shuffledArray
-      
+      return shuffledArray;
     };
 
     const validateHighScore = () => {
@@ -101,22 +109,22 @@ export default function GameBoard({
     const validateSelectedCard = () => {
       const BONUS = 5;
       const resetData = data.map((item) => ({ ...item, selected: false }));
-      
+
       if (pokemon.selected) {
         setData(resetData);
         validateHighScore();
         setScore(0);
         return;
       }
-      
+
       const shuffledData = getShuffledData(data);
       const allSelected = shuffledData.every((item) => item.selected);
-      
+
       if (allSelected) {
-        setScore((score) => score + BONUS)
+        setScore((score) => score + BONUS);
         setData(resetData);
-        setRound(rounds => rounds + 1);
-        return
+        setRound((rounds) => rounds + 1);
+        return;
       }
 
       setData(shuffledData);
@@ -128,14 +136,18 @@ export default function GameBoard({
 
   return (
     <div className="game-board">
-      {data.map((pokemon) => (
-        <Card
-          data={pokemon}
-          setData={setData}
-          onShuffle={() => handleShuffle(pokemon)}
-          key={pokemon.id}
-        />
-      ))}
+      {!isLoading ? (
+        data.map((pokemon) => (
+          <Card
+            data={pokemon}
+            setData={setData}
+            onShuffle={() => handleShuffle(pokemon)}
+            key={pokemon.id}
+          />
+        ))
+      ) : (
+        <h1>Loading...</h1>
+      )}
     </div>
   );
 }
