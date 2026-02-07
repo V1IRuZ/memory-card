@@ -13,6 +13,25 @@ export default function App() {
     setIsOpen(false);
   };
 
+  const validateHighScore = () => {
+      const minScore = Math.min(...highScore.map((item) => item.score));
+      if (score <= minScore) {
+        return;
+      }
+
+    setHighScore((prev) => {
+      const newHighScore = [
+        ...prev,
+        { name: "Player", score: score, id: crypto.randomUUID() },
+      ].toSorted((a, b) => b.score - a.score);
+
+      newHighScore.pop();
+      return newHighScore;
+    });
+
+    setIsOpen(true);
+  };
+
   return (
     <div className="page">
       <header>
@@ -27,10 +46,8 @@ export default function App() {
         {isOpen && <Scroreboard highScores={highScore} onClose={handleClose} />}
       </header>
       <GameBoard
-        score={score}
         setScore={setScore}
-        highScore={highScore}
-        setHighScore={setHighScore}
+        validateHighScore={validateHighScore}
       />
     </div>
   );

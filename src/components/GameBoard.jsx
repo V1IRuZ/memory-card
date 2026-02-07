@@ -4,10 +4,8 @@ import Card from "./Card";
 import "../styles/GameBoard.css";
 
 export default function GameBoard({
-  score,
   setScore,
-  highScore,
-  setHighScore,
+  validateHighScore,
 }) {
   const [data, setData] = useState(initialData);
   const [round, setRound] = useState(0);
@@ -102,13 +100,6 @@ export default function GameBoard({
       }
 
       return shuffledArray;
-    };
-
-    const validateHighScore = () => {
-      if (score <= highScore) {
-        return;
-      }
-      setHighScore(score);
     };
 
     const validateSelectedCard = () => {
