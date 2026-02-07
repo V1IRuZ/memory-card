@@ -27,10 +27,8 @@ export default function GameBoard({
     };
   };
 
-  useEffect(() => {
-    let ignore = false;
+  const generateRandomIds = () => {
     const maxId = 151;
-
     const usedIds = new Set();
 
     const randomIds = data.map(() => {
@@ -44,8 +42,16 @@ export default function GameBoard({
       return id;
     });
 
+    return randomIds;
+  };
+
+  useEffect(() => {
+    let ignore = false;
+
     const fetchAllPokemons = async () => {
       setIsLoading(true);
+
+      const randomIds = generateRandomIds();
 
       try {
         const results = await Promise.all(
@@ -136,7 +142,7 @@ export default function GameBoard({
 
   return (
     <div className="game-board">
-      {!isLoading ? (
+      {isLoading ? (
         data.map((pokemon) => (
           <Card
             data={pokemon}
@@ -146,7 +152,10 @@ export default function GameBoard({
           />
         ))
       ) : (
-        <h1>Loading...</h1>
+        <div className="loading">
+          <span className="spinner"></span>
+          <h1>Loading</h1>
+        </div>
       )}
     </div>
   );
