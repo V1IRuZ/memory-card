@@ -1,10 +1,22 @@
-function Score({ highScore, isActive, setHighScore }) {
+import goldMedal from "../assets/icons/medal-gold-winner-2-svgrepo-com.svg";
+import silverMedal from "../assets/icons/medal-silver-badge-svgrepo-com.svg";
+import bronzeMedal from "../assets/icons/medal-bronze-prize-svgrepo-com.svg";
+import certificate from "../assets/icons/quality-premium-certificate-svgrepo-com.svg";
+
+function Score({ highScore, index, isActive, setActiveScoreId, setHighScore }) {
+  const trophys = [
+    goldMedal,
+    silverMedal,
+    bronzeMedal,
+    certificate,
+    certificate,
+  ];
+
   return (
-    <li>
+    <li className="record-item">
       {isActive ? (
-        <div>
+        <div className="record">
           <label htmlFor="">
-            Name
             <input
               type="text"
               defaultValue={highScore.name}
@@ -19,22 +31,33 @@ function Score({ highScore, isActive, setHighScore }) {
               }
             />
           </label>
+          <button onClick={() => setActiveScoreId(null)}>OK</button>
         </div>
       ) : (
-        <h1>{highScore.name}</h1>
+        <div className="placement">
+          <img src={trophys[index]} alt="" />
+          <h1>{highScore.name}</h1>
+        </div>
       )}
-      <span>{highScore.score}</span>
+      {!isActive && <span>{highScore.score}</span>}
     </li>
   );
 }
 
-function ScoreList({ activeScoreId, highScores, setHighScore }) {
+function ScoreList({
+  activeScoreId,
+  setActiveScoreId,
+  highScores,
+  setHighScore,
+}) {
   return (
     <ul>
-      {highScores.map((highScore) => (
+      {highScores.map((highScore, index) => (
         <Score
           highScore={highScore}
+          index={index}
           isActive={activeScoreId === highScore.id}
+          setActiveScoreId={setActiveScoreId}
           setHighScore={setHighScore}
           key={highScore.id}
         />
@@ -47,6 +70,7 @@ export default function Scroreboard({
   activeScoreId,
   highScores,
   setHighScore,
+  setActiveScoreId,
   content,
   onClose,
 }) {
@@ -54,6 +78,7 @@ export default function Scroreboard({
     <dialog className="scoreboard" open>
       <ScoreList
         activeScoreId={activeScoreId}
+        setActiveScoreId={setActiveScoreId}
         highScores={highScores}
         setHighScore={setHighScore}
       />
