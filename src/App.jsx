@@ -2,6 +2,8 @@ import { useState } from "react";
 import { initialScores } from "./data/data";
 import GameBoard from "./components/GameBoard";
 import Scroreboard from "./components/Scroreboard";
+import trophyIcon from "./assets/icons/trophy-svgrepo-com.svg";
+import hintIcon from "./assets/icons/hint-svgrepo-com.svg";
 import "./App.css";
 
 export default function App() {
@@ -48,20 +50,27 @@ export default function App() {
           <span>Points:</span>
           <span>{score}</span>
         </div>
-        <button
-          className="highscore"
-          onClick={() => {
-            setContent(null);
-            setIsOpen(true);
-          }}
-        >
-          High Scores
-        </button>
+        <div className="option-btns">
+          <button
+            aria-label="Leaderboards"
+            className="leaderboards"
+            onClick={() => {
+              setContent(null);
+              setIsOpen(true);
+            }}
+          >
+            <img src={trophyIcon} alt="" />
+          </button>
+          <button className="hint-btn" aria-label="hint">
+            <img src={hintIcon} alt="" />
+          </button>
+        </div>
         {isOpen && (
           <Scroreboard
             activeScoreId={aciveScoreId}
             highScores={highScore}
             setHighScore={setHighScore}
+            setActiveScoreId={setActiveScoreId}
             content={content}
             score={score}
             onClose={handleClose}
