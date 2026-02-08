@@ -4,6 +4,7 @@ import Card from "./Card";
 import "../styles/GameBoard.css";
 
 export default function GameBoard({
+  isOpen,
   setScore,
   validateHighScore,
 }) {
@@ -103,6 +104,10 @@ export default function GameBoard({
     };
 
     const validateSelectedCard = () => {
+      if (isOpen) {
+        return
+      }
+      
       const BONUS = 5;
       const resetData = data.map((item) => ({ ...item, selected: false }));
 
