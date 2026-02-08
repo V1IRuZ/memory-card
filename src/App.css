@@ -9,11 +9,16 @@
 }
 
 body {
-  background-color: #343a40;
+  --page-width: clamp(320px, 100%, 1920px);
+  --dark: #343a40;
+  --yellow: #f0c808;
+  --blue: #086788;
+  --red: #c5283d;
+  --text-shadow: 3px 3px 3px var(--blue), -3px -3px 3px var(--blue);
+  background-color: var(--dark);
 }
 
-.page { 
-  --page-width: clamp(320px, 100%, 1920px); 
+.page {
   font-family:
     "Pokemon Solid",
     system-ui,
@@ -33,26 +38,36 @@ body {
   margin: 0 auto;
   width: var(--page-width);
   min-height: 100vh;
-  color: #f0c808;
+  color: var(--yellow);
   letter-spacing: 6px;
-  text-shadow:
-    3px 3px 3px #086788,
-    -3px -3px 3px #086788;
+  text-shadow: var(--text-shadow);
+}
+
+button {
+  cursor: pointer;
 }
 
 header {
   margin: 0 auto;
   padding: min(5%, 24px);
   display: flex;
+  gap: 24px;
+  align-items: center;
   flex-wrap: wrap;
   justify-content: space-evenly;
   width: var(--page-width);
 }
 
-.high-score {
-  display: grid;
-  grid-template-columns: 250px 50px;
-  justify-content: center;
+.option-btns {
+  display: flex;
+  gap: 16px;
+}
+
+.leaderboards,
+.hint-btn {
+  border: 2px;
+  border-radius: 20px;
+  background-color: var(--dark);
 }
 
 .score {
@@ -64,4 +79,79 @@ header {
 header span {
   font-size: 2rem;
   place-self: end;
+}
+
+dialog {
+  border-radius: 30px;
+  top: 15vh;
+  width: clamp(320px, 35vw, 800px);
+}
+
+.scoreboard ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.record-item {
+  padding: 8px 16px;
+  border-radius: 30px;
+  background-color: #434a52;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.record-item h1 {
+  padding-left: 8px;
+  font-size: 1.7rem;
+  /* text-wrap: nowrap; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.placement {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.scoreboard {
+  padding: 36px;
+  background-color: #343a40;
+  color: var(--yellow);
+  text-shadow: var(--blue);
+  z-index: 2;
+}
+
+.record {
+  display: flex;
+  gap: 12px;
+}
+
+.record input {
+  margin: 4px 16px;
+  padding: 2px 4px;
+  color: #f0c808;
+  text-shadow: var(--text-shadow);
+  background-color: var(--dark);
+  font-size: 1.8rem;
+}
+
+.scoreboard p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.close-btn {
+  padding: 6px 16px;
+  border: 2px solid var(--yellow);
+  border-radius: 20px;
+  font-size: 1.8rem;
+  color: var(--yellow);
+  text-shadow: var(--text-shadow);
+  background-color: var(--dark);
 }
