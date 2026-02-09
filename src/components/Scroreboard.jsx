@@ -2,6 +2,8 @@ import goldMedal from "../assets/icons/medal-gold-winner-2-svgrepo-com.svg";
 import silverMedal from "../assets/icons/medal-silver-badge-svgrepo-com.svg";
 import bronzeMedal from "../assets/icons/medal-bronze-prize-svgrepo-com.svg";
 import certificate from "../assets/icons/quality-premium-certificate-svgrepo-com.svg";
+import confirmIcon from "../assets/icons/ok-svgrepo-com.svg";
+import closeIcon from "../assets/icons/close_32dp_F0C808_FILL0_wght400_GRAD0_opsz40.svg";
 
 function Score({ highScore, index, isActive, setActiveScoreId, setHighScore }) {
   const trophys = [
@@ -31,7 +33,13 @@ function Score({ highScore, index, isActive, setActiveScoreId, setHighScore }) {
               }
             />
           </label>
-          <button onClick={() => setActiveScoreId(null)}>OK</button>
+          <button
+            className="confirm-btn"
+            aria-label="confirm"
+            onClick={() => setActiveScoreId(null)}
+          >
+            <img src={confirmIcon} alt="" />
+          </button>
         </div>
       ) : (
         <div className="placement">
@@ -76,6 +84,12 @@ export default function Scroreboard({
 }) {
   return (
     <dialog className="scoreboard" open>
+      <div className="modal-header">
+        <h1>TOP 5</h1>
+        <button className="x-btn" onClick={onClose}>
+          <img src={closeIcon} alt="" />
+        </button>
+      </div>
       <ScoreList
         activeScoreId={activeScoreId}
         setActiveScoreId={setActiveScoreId}
@@ -83,11 +97,11 @@ export default function Scroreboard({
         setHighScore={setHighScore}
       />
       {content === "game over" ? (
-        <div>
+        <div className="message">
           <p>Game Over!</p>
         </div>
       ) : content === "new record" ? (
-        <div>
+        <div className="message">
           <p>Congratulations! You made it to the leaderboards!</p>
         </div>
       ) : null}
