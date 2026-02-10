@@ -85,7 +85,6 @@ header span {
 dialog {
   --dialog-font-size: min(0.5rem + 2vw, 1.7rem);
   border-radius: 30px;
-  top: 15vh;
   width: min(100%, 800px);
 }
 
