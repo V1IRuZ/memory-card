@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { initialScores } from "./data/data";
 import GameBoard from "./components/GameBoard";
 import Scroreboard from "./components/Scroreboard";
@@ -9,12 +9,12 @@ import "./App.css";
 export default function App() {
   const [highScore, setHighScore] = useState(initialScores);
   const [score, setScore] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
   const [content, setContent] = useState(null);
   const [aciveScoreId, setActiveScoreId] = useState(null);
+  const leaderboardRef = useRef(null);
 
   const handleClose = () => {
-    setIsOpen(false);
+    leaderboardRef.current.close();
     setActiveScoreId(null);
   };
 
@@ -22,7 +22,7 @@ export default function App() {
     const minScore = Math.min(...highScore.map((item) => item.score));
     if (score <= minScore) {
       setContent("game over");
-      setIsOpen(true);
+      leaderboardRef.current.showModal();
       return;
     }
 
@@ -39,7 +39,7 @@ export default function App() {
 
     setActiveScoreId(newId);
     setContent("new record");
-    setIsOpen(true);
+    leaderboardRef.current.showModal();
   };
 
   return (
@@ -56,7 +56,7 @@ export default function App() {
             className="leaderboards"
             onClick={() => {
               setContent(null);
-              setIsOpen(true);
+              leaderboardRef.current.showModal();
             }}
           >
             <img src={trophyIcon} alt="" />
@@ -65,8 +65,8 @@ export default function App() {
             <img src={hintIcon} alt="" />
           </button>
         </div>
-        {isOpen && (
           <Scroreboard
+            ref={leaderboardRef}
             activeScoreId={aciveScoreId}
             highScores={highScore}
             setHighScore={setHighScore}
@@ -75,10 +75,8 @@ export default function App() {
             score={score}
             onClose={handleClose}
           />
-        )}
       </header>
       <GameBoard
-        isOpen={isOpen}
         setScore={setScore}
         validateHighScore={validateHighScore}
       />

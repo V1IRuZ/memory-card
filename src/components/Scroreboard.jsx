@@ -75,6 +75,7 @@ function ScoreList({
 }
 
 export default function Scroreboard({
+  ref,
   activeScoreId,
   highScores,
   setHighScore,
@@ -83,7 +84,7 @@ export default function Scroreboard({
   onClose,
 }) {
   return (
-    <dialog className="scoreboard" open>
+    <dialog ref={ref} className="scoreboard">
       <div className="modal-header">
         <h1>TOP 5</h1>
         <button className="x-btn" onClick={onClose}>
