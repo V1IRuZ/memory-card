@@ -9,7 +9,7 @@ import "./App.css";
 export default function App() {
   const [highScore, setHighScore] = useState(initialScores);
   const [score, setScore] = useState(0);
-  const [content, setContent] = useState(null);
+  const [message, setMessage] = useState(null);
   const [aciveScoreId, setActiveScoreId] = useState(null);
   const leaderboardRef = useRef(null);
 
@@ -21,7 +21,7 @@ export default function App() {
   const validateHighScore = () => {
     const minScore = Math.min(...highScore.map((item) => item.score));
     if (score <= minScore) {
-      setContent("game over");
+      setMessage("game over");
       leaderboardRef.current?.showModal();
       return;
     }
@@ -38,7 +38,7 @@ export default function App() {
     });
 
     setActiveScoreId(newId);
-    setContent("new record");
+    setMessage("new record");
     leaderboardRef.current?.showModal();
   };
 
@@ -55,7 +55,7 @@ export default function App() {
             aria-label="Leaderboards"
             className="leaderboards"
             onClick={() => {
-              setContent(null);
+              setMessage(null);
               leaderboardRef.current.showModal();
             }}
           >
@@ -71,7 +71,7 @@ export default function App() {
             highScores={highScore}
             setHighScore={setHighScore}
             setActiveScoreId={setActiveScoreId}
-            content={content}
+            message={message}
             score={score}
             onClose={handleClose}
           />

@@ -80,7 +80,7 @@ export default function Scroreboard({
   highScores,
   setHighScore,
   setActiveScoreId,
-  content,
+  message,
   onClose,
 }) {
   return (
@@ -104,11 +104,11 @@ export default function Scroreboard({
         highScores={highScores}
         setHighScore={setHighScore}
       />
-      {content === "game over" ? (
+      {message === "game over" ? (
         <div className="message">
           <p>Game Over!</p>
         </div>
-      ) : content === "new record" ? (
+      ) : message === "new record" ? (
         <div className="message">
           <p>Congratulations! You made it to the leaderboards!</p>
         </div>
