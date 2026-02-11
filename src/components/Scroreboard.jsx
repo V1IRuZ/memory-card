@@ -84,7 +84,14 @@ export default function Scroreboard({
   onClose,
 }) {
   return (
-    <dialog ref={ref} className="scoreboard">
+    <dialog
+      ref={ref}
+      className="scoreboard"
+      onCancel={(e) => {
+        e.preventDefault();
+        onClose();
+      }}
+    >
       <div className="modal-header">
         <h1>TOP 5</h1>
         <button className="x-btn" onClick={onClose}>
