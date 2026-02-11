@@ -86,6 +86,9 @@ dialog {
   --dialog-font-size: min(0.5rem + 2vw, 1.7rem);
   border-radius: 30px;
   width: min(100%, 800px);
+  background-color: var(--dark);
+  color: var(--yellow);
+  text-shadow: var(--blue);
 }
 
 dialog::backdrop {
@@ -102,6 +105,14 @@ dialog::backdrop {
   margin-bottom: 24px;
 }
 
+.rules-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px 0;
+}
+
 .record-item {
   padding: 8px 16px;
   border-radius: 30px;
@@ -111,6 +122,13 @@ dialog::backdrop {
   gap: 16px;
   justify-content: space-between;
   min-width: fit-content;
+}
+
+.rules-list li {
+  font-size: min(0.5rem + 1.5vw, 1.5rem);
+  padding: 8px 16px;
+  border-radius: 30px;
+  background-color: var(--light-gray);
 }
 
 .scoreboard img {
@@ -130,15 +148,8 @@ dialog::backdrop {
   gap: 16px;
 }
 
-.scoreboard {
-  margin: auto;
-  background-color: #343a40;
-  color: var(--yellow);
-  text-shadow: var(--blue);
-  z-index: 2;
-}
-
-.scoreboard ul {
+.scoreboard ul,
+.rules-list {
   padding: min(2%, 16px) min(5%, 36px);
 }
 
