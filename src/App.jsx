@@ -14,7 +14,7 @@ export default function App() {
   const leaderboardRef = useRef(null);
 
   const handleClose = () => {
-    leaderboardRef.current.close();
+    leaderboardRef.current?.close();
     setActiveScoreId(null);
   };
 
@@ -22,7 +22,7 @@ export default function App() {
     const minScore = Math.min(...highScore.map((item) => item.score));
     if (score <= minScore) {
       setContent("game over");
-      leaderboardRef.current.showModal();
+      leaderboardRef.current?.showModal();
       return;
     }
 
@@ -39,7 +39,7 @@ export default function App() {
 
     setActiveScoreId(newId);
     setContent("new record");
-    leaderboardRef.current.showModal();
+    leaderboardRef.current?.showModal();
   };
 
   return (
