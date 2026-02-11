@@ -82,7 +82,7 @@ export default function GameBoard({
     };
   }, [round]);
 
-  const handleShuffle = (pokemon, random = Math.random) => {
+  const handleShuffle = (pokemon) => {
     const getShuffledData = (array) => {
       let shuffledArray = array.map((item) =>
         item.id === pokemon.id ? { ...item, selected: true } : { ...item },
@@ -90,7 +90,7 @@ export default function GameBoard({
       let currentIndex = shuffledArray.length;
 
       while (currentIndex != 0) {
-        let randomIndex = Math.floor(random() * currentIndex);
+        let randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
 
         [shuffledArray[currentIndex], shuffledArray[randomIndex]] = [
