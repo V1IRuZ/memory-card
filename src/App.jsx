@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { initialScores } from "./data/data";
 import GameBoard from "./components/GameBoard";
 import Scroreboard from "./components/Scroreboard";
+import Rules from "./components/Rules";
 import trophyIcon from "./assets/icons/trophy-svgrepo-com.svg";
 import hintIcon from "./assets/icons/hint-svgrepo-com.svg";
 import "./App.css";
@@ -12,10 +13,15 @@ export default function App() {
   const [message, setMessage] = useState(null);
   const [aciveScoreId, setActiveScoreId] = useState(null);
   const leaderboardRef = useRef(null);
+  const rulesRef = useRef(null);
 
   const handleClose = () => {
     leaderboardRef.current?.close();
     setActiveScoreId(null);
+  };
+
+  const handleCloseRules = () => {
+    rulesRef.current?.close();
   };
 
   const validateHighScore = () => {
@@ -56,30 +62,32 @@ export default function App() {
             className="leaderboards"
             onClick={() => {
               setMessage(null);
-              leaderboardRef.current.showModal();
+              leaderboardRef.current?.showModal();
             }}
           >
             <img src={trophyIcon} alt="" />
           </button>
-          <button className="hint-btn" aria-label="hint">
+          <button
+            className="hint-btn"
+            aria-label="hint"
+            onClick={() => rulesRef.current?.showModal()}
+          >
             <img src={hintIcon} alt="" />
           </button>
         </div>
-          <Scroreboard
-            ref={leaderboardRef}
-            activeScoreId={aciveScoreId}
-            highScores={highScore}
-            setHighScore={setHighScore}
-            setActiveScoreId={setActiveScoreId}
-            message={message}
-            score={score}
-            onClose={handleClose}
-          />
+        <Scroreboard
+          ref={leaderboardRef}
+          activeScoreId={aciveScoreId}
+          highScores={highScore}
+          setHighScore={setHighScore}
+          setActiveScoreId={setActiveScoreId}
+          message={message}
+          score={score}
+          onClose={handleClose}
+        />
+        <Rules ref={rulesRef} onClose={handleCloseRules} />
       </header>
-      <GameBoard
-        setScore={setScore}
-        validateHighScore={validateHighScore}
-      />
+      <GameBoard setScore={setScore} validateHighScore={validateHighScore} />
     </div>
   );
 }
