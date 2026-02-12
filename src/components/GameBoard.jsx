@@ -109,7 +109,6 @@ export default function GameBoard({
       if (pokemon.selected) {
         setData(resetData);
         validateHighScore();
-        setScore(0);
         return;
       }
 

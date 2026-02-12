@@ -18,6 +18,10 @@ export default function App() {
   const handleClose = () => {
     leaderboardRef.current?.close();
     setActiveScoreId(null);
+
+    if (message) {
+      setScore(0);
+    }
   };
 
   const handleCloseRules = () => {
@@ -77,12 +81,12 @@ export default function App() {
         </div>
         <Scroreboard
           ref={leaderboardRef}
+          score={score}
           activeScoreId={aciveScoreId}
           highScores={highScore}
           setHighScore={setHighScore}
           setActiveScoreId={setActiveScoreId}
           message={message}
-          score={score}
           onClose={handleClose}
         />
         <Rules ref={rulesRef} onClose={handleCloseRules} />

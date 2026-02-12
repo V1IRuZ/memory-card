@@ -76,6 +76,7 @@ function ScoreList({
 
 export default function Scroreboard({
   ref,
+  score,
   activeScoreId,
   highScores,
   setHighScore,
@@ -106,7 +107,7 @@ export default function Scroreboard({
       />
       {message === "game over" ? (
         <div className="message">
-          <p>Game Over!</p>
+          <p>Game Over! Final score {score}.</p>
         </div>
       ) : message === "new record" ? (
         <div className="message">
