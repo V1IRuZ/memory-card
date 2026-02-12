@@ -14,6 +14,7 @@ body {
   --light-gray: #434a52;
   --yellow: #f0c808;
   --blue: #086788;
+  --focus-blue: #48cae4;
   --red: #c5283d;
   --text-shadow: 3px 3px 3px var(--blue), -3px -3px 3px var(--blue);
   background-color: var(--dark);
@@ -48,6 +49,17 @@ button {
   cursor: pointer;
 }
 
+button:focus {
+  outline: none;
+}
+
+.card:focus-visible,
+.leaderboards:focus-visible,
+.hint-btn:focus-visible,
+.x-btn:focus-visible {
+  border-color: var(--focus-blue);
+}
+
 header {
   margin: 0 auto;
   padding: min(5%, 24px);
@@ -66,7 +78,7 @@ header {
 
 .leaderboards,
 .hint-btn {
-  border: 2px;
+  border: 2px, solid var(--dark);
   border-radius: 20px;
   background-color: var(--dark);
 }
@@ -165,7 +177,8 @@ dialog::backdrop {
 
 .x-btn {
   background-color: var(--dark);
-  border-style: none;
+  border: 2px solid var(--dark);
+  border-radius: 20px;
 }
 
 .record {
