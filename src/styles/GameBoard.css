@@ -1,5 +1,6 @@
 .game-board {
   --blue: #086788;
+  --yellow: #f0c808;
   --gap-spacing: 16px;
   --main-padding: min(5%, 24px);
   width: clamp(320px, 100%, 1440px);
@@ -16,6 +17,9 @@
   border: 5px solid var(--blue);
   border-radius: 30px;
   display: grid;
+  letter-spacing: 6px;
+  color: var(--yellow);
+  text-shadow: 3px 3px var(--blue), -3px -3px 3px var(--blue);
   justify-content: center;
   align-items: center;
   grid-template-rows: 100px 1fr;
