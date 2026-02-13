@@ -51,7 +51,7 @@ export default function GameBoard({
     };
   }, [round]);
 
-  const handleShuffle = (pokemon) => {
+  const handleCardClick = (pokemon) => {
 
     const validateSelectedCard = () => {      
       const BONUS = 5;
@@ -87,7 +87,7 @@ export default function GameBoard({
           <Card
             data={pokemon}
             setData={setData}
-            onClick={() => handleShuffle(pokemon)}
+            onClick={() => handleCardClick(pokemon)}
             key={pokemon.id}
           />
         ))
