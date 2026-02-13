@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { initialData } from "../data/data";
+import { generateRandomIds } from "../data/utils";
 import Card from "./Card";
 import "../styles/GameBoard.css";
 
@@ -25,27 +26,9 @@ export default function GameBoard({
     };
   };
 
-  const generateRandomIds = () => {
-    const maxId = 151;
-    const usedIds = new Set();
-
-    const randomIds = data.map(() => {
-      let id;
-
-      do {
-        id = Math.floor(Math.random() * maxId);
-      } while (usedIds.has(id));
-
-      usedIds.add(id);
-      return id;
-    });
-
-    return randomIds;
-  };
-
   useEffect(() => {
     let ignore = false;
-    const randomIds = generateRandomIds();
+    const randomIds = generateRandomIds(data);
 
     const fetchAllPokemons = async () => {
       setIsLoading(true);
