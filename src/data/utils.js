@@ -49,4 +49,12 @@ const getShuffledData = (array, current) => {
   return shuffledArray;
 };
 
-export { generateRandomIds, fetchPokemon, getShuffledData };
+const saveData = (records) => {
+  localStorage.setItem("records", JSON.stringify(records));
+};
+
+const loadData = () => {
+  return JSON.parse(localStorage.getItem("records"));
+};
+
+export { generateRandomIds, fetchPokemon, getShuffledData, saveData, loadData };
