@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { initialScores } from "./data/data";
+import { loadData, saveData } from "./data/utils";
 import GameBoard from "./components/GameBoard";
 import Scoreboard from "./components/Scoreboard";
 import Rules from "./components/Rules";
@@ -8,7 +9,10 @@ import hintIcon from "./assets/icons/hint-svgrepo-com.svg";
 import "./App.css";
 
 export default function App() {
-  const [highScore, setHighScore] = useState(initialScores);
+  const [highScore, setHighScore] = useState(() => {
+    const savedRecords = loadData();
+    return savedRecords || initialScores;
+  });
   const [score, setScore] = useState(0);
   const [message, setMessage] = useState(null);
   const [aciveScoreId, setActiveScoreId] = useState(null);
@@ -19,7 +23,13 @@ export default function App() {
     leaderboardRef.current?.close();
     setActiveScoreId(null);
 
-    if (message) {
+    if (message === "new record") {
+      saveData(highScore);
+      setScore(0);
+      return;
+    }
+
+    if (message === "game over") {
       setScore(0);
     }
   };
