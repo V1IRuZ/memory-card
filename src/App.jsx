@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { initialScores } from "./data/data";
 import GameBoard from "./components/GameBoard";
-import Scroreboard from "./components/Scroreboard";
+import Scoreboard from "./components/Scoreboard";
 import Rules from "./components/Rules";
 import trophyIcon from "./assets/icons/trophy-svgrepo-com.svg";
 import hintIcon from "./assets/icons/hint-svgrepo-com.svg";
@@ -79,7 +79,7 @@ export default function App() {
             <img src={hintIcon} alt="" />
           </button>
         </div>
-        <Scroreboard
+        <Scoreboard
           ref={leaderboardRef}
           score={score}
           activeScoreId={aciveScoreId}
