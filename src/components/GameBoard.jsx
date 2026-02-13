@@ -87,7 +87,7 @@ export default function GameBoard({
           <Card
             data={pokemon}
             setData={setData}
-            onShuffle={() => handleShuffle(pokemon)}
+            onClick={() => handleShuffle(pokemon)}
             key={pokemon.id}
           />
         ))
