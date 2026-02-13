@@ -30,4 +30,23 @@ const fetchPokemon = async (pokemonId) => {
   };
 };
 
-export { generateRandomIds, fetchPokemon };
+const getShuffledData = (array, current) => {
+  let shuffledArray = array.map((item) =>
+    item.id === current.id ? { ...item, selected: true } : { ...item },
+  );
+  let currentIndex = shuffledArray.length;
+
+  while (currentIndex != 0) {
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [shuffledArray[currentIndex], shuffledArray[randomIndex]] = [
+      shuffledArray[randomIndex],
+      shuffledArray[currentIndex],
+    ];
+  }
+
+  return shuffledArray;
+};
+
+export { generateRandomIds, fetchPokemon, getShuffledData };

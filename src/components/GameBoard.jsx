@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { initialData } from "../data/data";
-import { generateRandomIds, fetchPokemon } from "../data/utils";
+import { generateRandomIds, fetchPokemon, getShuffledData } from "../data/utils";
 import Card from "./Card";
 import "../styles/GameBoard.css";
 
@@ -52,24 +52,6 @@ export default function GameBoard({
   }, [round]);
 
   const handleShuffle = (pokemon) => {
-    const getShuffledData = (array) => {
-      let shuffledArray = array.map((item) =>
-        item.id === pokemon.id ? { ...item, selected: true } : { ...item },
-      );
-      let currentIndex = shuffledArray.length;
-
-      while (currentIndex != 0) {
-        let randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-
-        [shuffledArray[currentIndex], shuffledArray[randomIndex]] = [
-          shuffledArray[randomIndex],
-          shuffledArray[currentIndex],
-        ];
-      }
-
-      return shuffledArray;
-    };
 
     const validateSelectedCard = () => {      
       const BONUS = 5;
@@ -81,7 +63,7 @@ export default function GameBoard({
         return;
       }
 
-      const shuffledData = getShuffledData(data);
+      const shuffledData = getShuffledData(data, pokemon);
       const allSelected = shuffledData.every((item) => item.selected);
 
       if (allSelected) {
