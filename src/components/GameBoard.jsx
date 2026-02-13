@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { initialData } from "../data/data";
-import { generateRandomIds } from "../data/utils";
+import { generateRandomIds, fetchPokemon } from "../data/utils";
 import Card from "./Card";
 import "../styles/GameBoard.css";
 
@@ -11,20 +11,6 @@ export default function GameBoard({
   const [data, setData] = useState(initialData);
   const [round, setRound] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-
-  const fetchPokemon = async (pokemonId) => {
-    const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}/`;
-    const response = await fetch(url, { mode: "cors" });
-    const json = await response.json();
-    const rawName = json.name;
-    const name = rawName[0].toUpperCase() + rawName.slice(1);
-    const image = json.sprites.other["official-artwork"].front_default;
-
-    return {
-      name,
-      image,
-    };
-  };
 
   useEffect(() => {
     let ignore = false;
