@@ -65,41 +65,43 @@ export default function App() {
   return (
     <div className="page">
       <header>
-        <h1>Memory Card</h1>
-        <div className="score">
-          <span>Points:</span>
-          <span>{score}</span>
+        <div className="container">
+          <h1>Memory Card</h1>
+          <div className="score">
+            <span>Points:</span>
+            <span>{score}</span>
+          </div>
+          <div className="option-btns">
+            <button
+              aria-label="Leaderboards"
+              className="leaderboards"
+              onClick={() => {
+                setMessage(null);
+                leaderboardRef.current?.showModal();
+              }}
+            >
+              <img src={trophyIcon} alt="" />
+            </button>
+            <button
+              className="hint-btn"
+              aria-label="hint"
+              onClick={() => rulesRef.current?.showModal()}
+            >
+              <img src={hintIcon} alt="" />
+            </button>
+          </div>
+          <Scoreboard
+            ref={leaderboardRef}
+            score={score}
+            activeScoreId={aciveScoreId}
+            highScores={highScore}
+            setHighScore={setHighScore}
+            setActiveScoreId={setActiveScoreId}
+            message={message}
+            onClose={handleClose}
+          />
+          <Rules ref={rulesRef} onClose={handleCloseRules} />
         </div>
-        <div className="option-btns">
-          <button
-            aria-label="Leaderboards"
-            className="leaderboards"
-            onClick={() => {
-              setMessage(null);
-              leaderboardRef.current?.showModal();
-            }}
-          >
-            <img src={trophyIcon} alt="" />
-          </button>
-          <button
-            className="hint-btn"
-            aria-label="hint"
-            onClick={() => rulesRef.current?.showModal()}
-          >
-            <img src={hintIcon} alt="" />
-          </button>
-        </div>
-        <Scoreboard
-          ref={leaderboardRef}
-          score={score}
-          activeScoreId={aciveScoreId}
-          highScores={highScore}
-          setHighScore={setHighScore}
-          setActiveScoreId={setActiveScoreId}
-          message={message}
-          onClose={handleClose}
-        />
-        <Rules ref={rulesRef} onClose={handleCloseRules} />
       </header>
       <GameBoard setScore={setScore} validateHighScore={validateHighScore} />
     </div>
