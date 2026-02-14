@@ -6,7 +6,7 @@ const generateRandomIds = (array) => {
     let id;
 
     do {
-      id = Math.floor(Math.random() * maxId);
+      id = Math.floor(Math.random() * maxId) + 1;
     } while (usedIds.has(id));
 
     usedIds.add(id);
