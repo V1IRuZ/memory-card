@@ -56,7 +56,8 @@ button:focus {
 .card:focus-visible,
 .leaderboards:focus-visible,
 .hint-btn:focus-visible,
-.x-btn:focus-visible {
+.x-btn:focus-visible,
+.close-btn:focus-visible {
   border-color: var(--focus-blue);
 }
 
