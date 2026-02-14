@@ -1,13 +1,23 @@
 import { useEffect, useState } from "react";
 import { initialData } from "../data/data";
-import { generateRandomIds, fetchPokemon, getShuffledData } from "../data/utils";
+import {
+  generateRandomIds,
+  fetchPokemon,
+  getShuffledData,
+} from "../data/utils";
 import Card from "./Card";
 import "../styles/GameBoard.css";
 
-export default function GameBoard({
-  setScore,
-  validateHighScore,
-}) {
+function Spinner() {
+  return (
+    <div className="loading">
+      <span className="spinner"></span>
+      <h1>Loading</h1>
+    </div>
+  );
+}
+
+export default function GameBoard({ setScore, validateHighScore }) {
   const [data, setData] = useState(initialData);
   const [round, setRound] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -52,8 +62,7 @@ export default function GameBoard({
   }, [round]);
 
   const handleCardClick = (pokemon) => {
-
-    const validateSelectedCard = () => {      
+    const validateSelectedCard = () => {
       const BONUS = 5;
       const resetData = data.map((item) => ({ ...item, selected: false }));
 
@@ -92,10 +101,7 @@ export default function GameBoard({
           />
         ))
       ) : (
-        <div className="loading">
-          <span className="spinner"></span>
-          <h1>Loading</h1>
-        </div>
+        <Spinner />
       )}
     </div>
   );
