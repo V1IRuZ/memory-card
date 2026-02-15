@@ -1,14 +1,13 @@
-import closeIcon from "../assets/icons/close_32dp_F0C808_FILL0_wght400_GRAD0_opsz40.svg";
+import Modal from "./ui/Modal";
 
 export default function Rules({ ref, onClose }) {
   return (
-    <dialog className="rules" ref={ref}>
-      <div className="modal-header">
-        <h1>Game Rules</h1>
-        <button className="x-btn" onClick={onClose}>
-          <img src={closeIcon} alt="" />
-        </button>
-      </div>
+    <Modal
+      className="rules"
+      ref={ref}
+      onClose={onClose}
+      headerText="Game Rules"
+    >
       <ul className="rules-list">
         <li>Select a card that you haven't selected yet</li>
         <li>After each selection, the cards are shuffled</li>
@@ -22,11 +21,6 @@ export default function Rules({ ref, onClose }) {
           in the round
         </li>
       </ul>
-      <div className="close">
-        <button className="close-btn" onClick={onClose}>
-          Close
-        </button>
-      </div>
-    </dialog>
+    </Modal>
   );
 }
