@@ -237,7 +237,7 @@ dialog::backdrop {
 }
 
 .message {
-  padding: 0 min(5%, 36px);
+  padding: min(2%, 16px);
 }
 
 .close {
