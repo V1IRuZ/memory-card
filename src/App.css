@@ -56,7 +56,8 @@ button:focus {
 .leaderboards:focus-visible,
 .hint-btn:focus-visible,
 .x-btn:focus-visible,
-.close-btn:focus-visible {
+.close-btn:focus-visible,
+.confirm-btn:focus-visible {
   border-color: var(--focus-blue);
 }
 
@@ -199,13 +200,19 @@ dialog::backdrop {
 }
 
 .record input {
+  outline: none;
+  border: 2px solid var(--yellow);
   width: min(700px, 100%);
   margin: 4px 16px;
-  padding: 2px 4px;
-  color: #f0c808;
+  padding: 5px 10px;
+  color: var(--yellow);
   text-shadow: var(--text-shadow);
   background-color: var(--dark);
   font-size: var(--dialog-font-size);
+}
+
+.record input:focus-visible {
+  border-color: var(--focus-blue);
 }
 
 .scoreboard p {
@@ -240,7 +247,9 @@ dialog::backdrop {
 }
 
 .confirm-btn {
+  justify-self: center;
+  border-radius: 20px;
+  border: 2px solid var(--light-gray);
   background-color: var(--light-gray);
-  padding: 0;
-  border-style: none;
+  padding: 8px;
 }
