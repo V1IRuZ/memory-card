@@ -5,17 +5,9 @@ import {
   fetchPokemon,
   getShuffledData,
 } from "../data/utils";
+import Spinner from "./ui/Spinner";
 import Card from "./Card";
 import "../styles/GameBoard.css";
-
-function Spinner() {
-  return (
-    <div className="loading">
-      <span className="spinner"></span>
-      <h1>Loading</h1>
-    </div>
-  );
-}
 
 export default function GameBoard({ setScore, validateHighScore }) {
   const [data, setData] = useState(initialData);
