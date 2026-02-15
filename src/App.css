@@ -91,6 +91,12 @@ header .container {
     solid var(--red);
   border-radius: 20px;
   background-color: var(--red);
+  transition: transform 0.3s ease-in-out;
+}
+
+.leaderboards:hover,
+.hint-btn:hover {
+  transform: scale(1.1);
 }
 
 .score {
@@ -246,10 +252,25 @@ dialog::backdrop {
   background-color: var(--dark);
 }
 
+.close-btn,
+.x-btn {
+  transition: background-color 0.3s ease-in-out;
+}
+
+.close-btn:hover,
+.x-btn:hover {
+  background-color: var(--light-gray);
+}
+
 .confirm-btn {
   justify-self: center;
   border-radius: 20px;
   border: 2px solid var(--light-gray);
   background-color: var(--light-gray);
-  padding: 8px;
+  padding: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.confirm-btn:hover {
+  transform: scale(1.1);
 }
