@@ -6,6 +6,7 @@ import {
   getShuffledData,
 } from "../data/utils";
 import Spinner from "./ui/Spinner";
+import Error from "./ui/Error";
 import Card from "./Card";
 import "../styles/GameBoard.css";
 
@@ -13,6 +14,7 @@ export default function GameBoard({ setScore, validateCurrentScore }) {
   const [data, setData] = useState(initialData);
   const [round, setRound] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     let ignore = false;
@@ -39,6 +41,7 @@ export default function GameBoard({ setScore, validateCurrentScore }) {
         }
       } catch (err) {
         console.error(err);
+        setIsError(true);
       } finally {
         if (!ignore) {
           setIsLoading(false);
@@ -81,20 +84,33 @@ export default function GameBoard({ setScore, validateCurrentScore }) {
     validateSelectedCard();
   };
 
+  if (isLoading) {
+    return (
+      <div className="game-board">
+        <Spinner />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="game-board">
+        <Error />
+      </div>
+    );
+  }
+
   return (
     <div className="game-board">
-      {!isLoading ? (
-        data.map((pokemon) => (
-          <Card
-            data={pokemon}
-            setData={setData}
-            onClick={() => handleCardClick(pokemon)}
-            key={pokemon.id}
-          />
-        ))
-      ) : (
-        <Spinner />
-      )}
+      {data.map((pokemon) => (
+        <Card
+          data={pokemon}
+          setData={setData}
+          onClick={() => handleCardClick(pokemon)}
+          key={pokemon.id}
+        />
+      ))}
+      u
     </div>
   );
 }
