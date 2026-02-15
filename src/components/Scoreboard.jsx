@@ -1,3 +1,5 @@
+import Modal from "./ui/Modal";
+import Message from "./Message";
 import goldMedal from "../assets/icons/medal-gold-winner-2-svgrepo-com.svg";
 import silverMedal from "../assets/icons/medal-silver-badge-svgrepo-com.svg";
 import bronzeMedal from "../assets/icons/medal-bronze-prize-svgrepo-com.svg";
@@ -105,16 +107,7 @@ export default function Scoreboard({
         highScores={highScores}
         setHighScore={setHighScore}
       />
-      {message === "game over" ? (
-        <div className="message">
-          <p>Game Over! Final score {score}.</p>
-        </div>
-      ) : message === "new record" ? (
-        <div className="message">
-          <p>Congratulations! You made it to the leaderboards!</p>
-        </div>
-      ) : null}
-
+      <Message message={message} score={score} />
       <div className="close">
         <button className="close-btn" onClick={onClose}>
           Close
