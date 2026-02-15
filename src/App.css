@@ -160,7 +160,7 @@ dialog::backdrop {
 }
 
 .scoreboard img {
-  width: 42px;
+  width: clamp(32px, 10vw, 42px);
 }
 
 .record-item h1 {
@@ -178,12 +178,13 @@ dialog::backdrop {
 
 .scoreboard ul,
 .rules-list {
-  padding: min(2%, 16px) min(5%, 36px);
+  padding: min(2%, 16px);
 }
 
 .modal-header {
   padding-left: min(5%, 36px);
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -199,13 +200,14 @@ dialog::backdrop {
 
 .record {
   display: grid;
-  grid-template-columns: 1fr 70px;
+  grid-template-columns: 1fr 55px;
   align-items: center;
   gap: 24px;
   width: 100%;
 }
 
 .record input {
+  letter-spacing: 5px;
   outline: none;
   border: 2px solid var(--yellow);
   width: min(700px, 100%);
@@ -225,7 +227,7 @@ dialog::backdrop {
   padding: min(5%, 24px);
   border-radius: 30px;
   background-color: var(--light-gray);
-  font-size: var(--dialog-font-size);
+  font-size: min(0.3rem + 2vw, 1.7rem);
   margin-bottom: 20px;
 }
 
