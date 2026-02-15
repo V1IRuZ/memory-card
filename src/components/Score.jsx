@@ -22,6 +22,7 @@ export default function Score({ highScore, index, isActive, setActiveScoreId, se
             <input
               type="text"
               defaultValue={highScore.name}
+              maxLength={20}
               onChange={(e) =>
                 setHighScore((prev) =>
                   prev.map((item) =>
