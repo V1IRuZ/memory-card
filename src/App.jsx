@@ -38,7 +38,7 @@ export default function App() {
     rulesRef.current?.close();
   };
 
-  const validateHighScore = () => {
+  const validateCurrentScore = () => {
     const minScore = Math.min(...highScore.map((item) => item.score));
     if (score <= minScore) {
       setMessage("game over");
@@ -103,7 +103,7 @@ export default function App() {
           <Rules ref={rulesRef} onClose={handleCloseRules} />
         </div>
       </header>
-      <GameBoard setScore={setScore} validateHighScore={validateHighScore} />
+      <GameBoard setScore={setScore} validateCurrentScore={validateCurrentScore} />
     </div>
   );
 }

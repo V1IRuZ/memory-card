@@ -9,7 +9,7 @@ import Spinner from "./ui/Spinner";
 import Card from "./Card";
 import "../styles/GameBoard.css";
 
-export default function GameBoard({ setScore, validateHighScore }) {
+export default function GameBoard({ setScore, validateCurrentScore }) {
   const [data, setData] = useState(initialData);
   const [round, setRound] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -60,7 +60,7 @@ export default function GameBoard({ setScore, validateHighScore }) {
 
       if (pokemon.selected) {
         setData(resetData);
-        validateHighScore();
+        validateCurrentScore();
         return;
       }
 
