@@ -5,7 +5,6 @@ import silverMedal from "../assets/icons/medal-silver-badge-svgrepo-com.svg";
 import bronzeMedal from "../assets/icons/medal-bronze-prize-svgrepo-com.svg";
 import certificate from "../assets/icons/quality-premium-certificate-svgrepo-com.svg";
 import confirmIcon from "../assets/icons/ok-svgrepo-com.svg";
-import closeIcon from "../assets/icons/close_32dp_F0C808_FILL0_wght400_GRAD0_opsz40.svg";
 
 function Score({ highScore, index, isActive, setActiveScoreId, setHighScore }) {
   const trophys = [
@@ -87,20 +86,12 @@ export default function Scoreboard({
   onClose,
 }) {
   return (
-    <dialog
+    <Modal
       ref={ref}
       className="scoreboard"
-      onCancel={(e) => {
-        e.preventDefault();
-        onClose();
-      }}
+      headerText="TOP 5"
+      onClose={onClose}
     >
-      <div className="modal-header">
-        <h1>TOP 5</h1>
-        <button className="x-btn" onClick={onClose}>
-          <img src={closeIcon} alt="" />
-        </button>
-      </div>
       <ScoreList
         activeScoreId={activeScoreId}
         setActiveScoreId={setActiveScoreId}
@@ -108,11 +99,6 @@ export default function Scoreboard({
         setHighScore={setHighScore}
       />
       <Message message={message} score={score} />
-      <div className="close">
-        <button className="close-btn" onClick={onClose}>
-          Close
-        </button>
-      </div>
-    </dialog>
+    </Modal>
   );
 }
