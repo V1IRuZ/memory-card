@@ -19,16 +19,21 @@
   display: grid;
   letter-spacing: 6px;
   color: var(--yellow);
-  text-shadow: 3px 3px var(--blue), -3px -3px 3px var(--blue);
+  text-shadow:
+    3px 3px var(--blue),
+    -3px -3px 3px var(--blue);
   justify-content: center;
   align-items: center;
   grid-template-rows: 100px 1fr;
-  transition: transform 0.3s ease-in-out;
+  transition:
+    transform 0.3s ease-in-out,
+    border-color 0.3s ease-in-out;
   padding: min(3%, 16px);
 }
 
 .card:hover {
   transform: scale(1.05);
+  border-color: #48cae4;
 }
 
 .card h1 {
@@ -62,11 +67,11 @@
 
 .error {
   text-align: center;
- min-width: 100%;
- min-height: 60vh;
- display: flex;
- align-items: center;
- justify-content: center; 
+  min-width: 100%;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes Spin {
