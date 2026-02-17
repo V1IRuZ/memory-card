@@ -1,6 +1,8 @@
 import { useState, useRef } from "react";
 import { initialScores } from "./data/data";
 import { loadData, saveData } from "./data/utils";
+import Button from "./components/ui/Button";
+import ButtonContainer from "./components/ui/ButtonContainer";
 import GameBoard from "./components/GameBoard";
 import Scoreboard from "./components/Scoreboard";
 import Rules from "./components/Rules";
@@ -71,25 +73,23 @@ export default function App() {
             <span>Points:</span>
             <span>{score}</span>
           </div>
-          <div className="option-btns">
-            <button
-              aria-label="Leaderboards"
+          <ButtonContainer className="option-btns">
+            <Button
               className="leaderboards"
+              arialLabel="Leaderboards"
+              iconSrc={trophyIcon}
               onClick={() => {
                 setMessage(null);
                 leaderboardRef.current?.showModal();
               }}
-            >
-              <img src={trophyIcon} alt="" />
-            </button>
-            <button
+            />
+            <Button
               className="hint-btn"
-              aria-label="hint"
+              arialLabel="hint"
+              iconSrc={hintIcon}
               onClick={() => rulesRef.current?.showModal()}
-            >
-              <img src={hintIcon} alt="" />
-            </button>
-          </div>
+            />
+          </ButtonContainer>
           <Scoreboard
             ref={leaderboardRef}
             score={score}
@@ -103,7 +103,10 @@ export default function App() {
           <Rules ref={rulesRef} onClose={handleCloseRules} />
         </div>
       </header>
-      <GameBoard setScore={setScore} validateCurrentScore={validateCurrentScore} />
+      <GameBoard
+        setScore={setScore}
+        validateCurrentScore={validateCurrentScore}
+      />
     </div>
   );
 }
