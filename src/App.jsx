@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { initialScores } from "./data/data";
-import { loadData, saveData } from "./data/utils";
+import { loadData, saveData } from "./utils/helpers";
 import Button from "./components/ui/Button";
 import ButtonContainer from "./components/ui/ButtonContainer";
 import GameBoard from "./components/GameBoard";

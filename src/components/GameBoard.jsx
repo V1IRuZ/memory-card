@@ -4,7 +4,7 @@ import {
   generateRandomIds,
   fetchPokemon,
   getShuffledData,
-} from "../data/utils";
+} from "../utils/helpers";
 import Spinner from "./ui/Spinner";
 import Error from "./ui/Error";
 import Card from "./Card";
