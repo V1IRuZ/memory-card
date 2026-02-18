@@ -1,5 +1,5 @@
 import Button from "./Button";
-import { ButtonContainer } from "./ButtonContainer";
+import ButtonContainer from "./ButtonContainer";
 import closeIcon from "../../assets/icons/close_32dp_F0C808_FILL0_wght400_GRAD0_opsz40.svg";
 
 export default function Modal({
