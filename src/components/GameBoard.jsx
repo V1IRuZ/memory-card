@@ -110,7 +110,6 @@ export default function GameBoard({ setScore, validateCurrentScore }) {
           key={pokemon.id}
         />
       ))}
-      u
     </div>
   );
 }
