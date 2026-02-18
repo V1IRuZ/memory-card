@@ -52,12 +52,8 @@ button:focus {
   outline: none;
 }
 
-.card:focus-visible,
 .leaderboards:focus-visible,
-.hint-btn:focus-visible,
-.x-btn:focus-visible,
-.close-btn:focus-visible,
-.confirm-btn:focus-visible {
+.hint-btn:focus-visible {
   border-color: var(--focus-blue);
 }
 
@@ -85,7 +81,6 @@ header .container {
 
 .leaderboards,
 .hint-btn {
-  outline: none;
   border:
     2px,
     solid var(--red);
@@ -108,171 +103,4 @@ header .container {
 header span {
   font-size: 2rem;
   place-self: end;
-}
-
-dialog {
-  --dialog-font-size: min(0.5rem + 2vw, 1.7rem);
-  border-radius: 30px;
-  width: min(100%, 800px);
-  background-color: var(--dark);
-  color: var(--yellow);
-  text-shadow: var(--blue);
-}
-
-dialog::backdrop {
-  background-color: var(--dark);
-  opacity: 0.9;
-}
-
-.scoreboard ul {
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.rules-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 24px 0;
-}
-
-.record-item {
-  padding: 8px 16px;
-  border-radius: 30px;
-  background-color: var(--light-gray);
-  display: flex;
-  align-content: center;
-  gap: 16px;
-  justify-content: space-between;
-  min-width: fit-content;
-}
-
-.rules-list li {
-  font-size: min(0.5rem + 1.5vw, 1.5rem);
-  padding: 8px 16px;
-  border-radius: 30px;
-  background-color: var(--light-gray);
-}
-
-.scoreboard img {
-  width: clamp(32px, 10vw, 42px);
-}
-
-.record-item h1 {
-  padding-left: 8px;
-  font-size: var(--dialog-font-size);
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.placement {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.scoreboard ul,
-.rules-list {
-  padding: min(2%, 16px);
-}
-
-.modal-header {
-  padding-left: min(5%, 36px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.modal-header h1 {
-  font-size: var(--dialog-font-size);
-}
-
-.x-btn {
-  background-color: var(--dark);
-  border: 2px solid var(--dark);
-  border-radius: 20px;
-}
-
-.record {
-  display: grid;
-  grid-template-columns: 1fr 55px;
-  align-items: center;
-  gap: 24px;
-  width: 100%;
-}
-
-.record input {
-  letter-spacing: 5px;
-  outline: none;
-  border: 2px solid var(--yellow);
-  width: min(700px, 100%);
-  margin: 4px 16px;
-  padding: 5px 10px;
-  color: var(--yellow);
-  text-shadow: var(--text-shadow);
-  background-color: var(--dark);
-  font-size: var(--dialog-font-size);
-}
-
-.record input:focus-visible {
-  border-color: var(--focus-blue);
-}
-
-.scoreboard p {
-  padding: min(5%, 24px);
-  border-radius: 30px;
-  background-color: var(--light-gray);
-  font-size: min(0.3rem + 2vw, 1.7rem);
-  margin-bottom: 20px;
-}
-
-.scoreboard span {
-  align-self: center;
-  font-size: var(--dialog-font-size);
-}
-
-.message {
-  padding: min(2%, 16px);
-}
-
-.close {
-  padding-left: min(5%, 36px);
-}
-
-.close-btn {
-  padding: 6px 16px;
-  border: 2px solid var(--yellow);
-  border-radius: 20px;
-  font-size: var(--dialog-font-size);
-  color: var(--yellow);
-  text-shadow: var(--text-shadow);
-  background-color: var(--dark);
-}
-
-.close-btn,
-.x-btn {
-  transition: background-color 0.3s ease-in-out;
-}
-
-.close-btn:hover,
-.x-btn:hover {
-  background-color: var(--light-gray);
-}
-
-.confirm-btn {
-  justify-self: center;
-  border-radius: 20px;
-  border: 2px solid var(--light-gray);
-  background-color: var(--light-gray);
-  padding: 5px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.confirm-btn:hover {
-  transform: scale(1.1);
 }

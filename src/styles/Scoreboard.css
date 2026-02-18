@@ -1,0 +1,108 @@
+.scoreboard {
+  --dialog-font-size: min(0.5rem + 2vw, 1.7rem);
+  --page-width: clamp(320px, 100%, 1920px);
+  --dark: #343a40;
+  --light-gray: #434a52;
+  --yellow: #f0c808;
+  --blue: #086788;
+  --focus-blue: #48cae4;
+  --red: #c5283d;
+  --text-shadow: 3px 3px 3px var(--blue), -3px -3px 3px var(--blue);
+}
+
+.scoreboard ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: min(2%, 16px);
+}
+
+.record-item {
+  padding: 8px 16px;
+  border-radius: 30px;
+  background-color: var(--light-gray);
+  display: flex;
+  align-content: center;
+  gap: 16px;
+  justify-content: space-between;
+  min-width: fit-content;
+}
+
+.record-item h1 {
+  padding-left: 8px;
+  font-size: var(--dialog-font-size);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.placement {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.scoreboard img {
+  width: clamp(32px, 10vw, 42px);
+}
+
+.record {
+  display: grid;
+  grid-template-columns: 1fr 55px;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.record input {
+  letter-spacing: 5px;
+  outline: none;
+  border: 2px solid var(--yellow);
+  width: min(700px, 100%);
+  margin: 4px 16px;
+  padding: 5px 10px;
+  color: var(--yellow);
+  text-shadow: var(--text-shadow);
+  background-color: var(--dark);
+  font-size: var(--dialog-font-size);
+}
+
+.record input:focus-visible {
+  border-color: var(--focus-blue);
+}
+
+.scoreboard p {
+  padding: min(5%, 24px);
+  border-radius: 30px;
+  background-color: var(--light-gray);
+  font-size: min(0.3rem + 2vw, 1.7rem);
+  margin-bottom: 20px;
+}
+
+.scoreboard span {
+  align-self: center;
+  font-size: var(--dialog-font-size);
+}
+
+.confirm-btn {
+  justify-self: center;
+  border-radius: 20px;
+  border: 2px solid var(--light-gray);
+  background-color: var(--light-gray);
+  padding: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.confirm-btn:hover {
+  transform: scale(1.1);
+}
+
+.confirm-btn:focus-visible {
+  border-color: var(--focus-blue);
+}
+
+.message {
+  padding: min(2%, 16px);
+}
