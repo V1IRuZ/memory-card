@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { initialData } from "../data/data";
+import { initialData } from "../data/data.js";
 import {
   generateRandomIds,
   fetchPokemon,
   getShuffledData,
-} from "../utils/helpers";
-import Spinner from "./ui/Spinner";
-import Error from "./ui/Error";
-import Card from "./Card";
+} from "../utils/helpers.js";
+import Spinner from "./ui/Spinner.jsx";
+import Error from "./ui/Error.jsx";
+import Card from "./Card.jsx";
 import "../styles/GameBoard.css";
 
 export default function GameBoard({ setScore, validateCurrentScore }) {

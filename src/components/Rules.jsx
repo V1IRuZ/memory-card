@@ -1,4 +1,4 @@
-import Modal from "./ui/Modal";
+import Modal from "./ui/Modal.jsx";
 
 export default function Rules({ ref, onClose }) {
   return (

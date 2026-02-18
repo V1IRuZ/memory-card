@@ -1,4 +1,4 @@
-import Button from "./ui/Button";
+import Button from "./ui/Button.jsx";
 import goldMedal from "../assets/icons/medal-gold-winner-2-svgrepo-com.svg";
 import silverMedal from "../assets/icons/medal-silver-badge-svgrepo-com.svg";
 import bronzeMedal from "../assets/icons/medal-bronze-prize-svgrepo-com.svg";

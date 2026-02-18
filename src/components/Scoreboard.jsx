@@ -1,6 +1,6 @@
-import Modal from "./ui/Modal";
-import ScoreList from "./ScoreList";
-import Message from "./Message";
+import Modal from "./ui/Modal.jsx";
+import ScoreList from "./ScoreList.jsx";
+import Message from "./Message.jsx";
 
 export default function Scoreboard({
   ref,

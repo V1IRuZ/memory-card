@@ -1,11 +1,11 @@
 import { useState, useRef } from "react";
-import { initialScores } from "./data/data";
-import { loadData, saveData } from "./utils/helpers";
-import Button from "./components/ui/Button";
-import ButtonContainer from "./components/ui/ButtonContainer";
-import GameBoard from "./components/GameBoard";
-import Scoreboard from "./components/Scoreboard";
-import Rules from "./components/Rules";
+import { initialScores } from "./data/data.js";
+import { loadData, saveData } from "./utils/helpers.js";
+import Button from "./components/ui/Button.jsx";
+import ButtonContainer from "./components/ui/ButtonContainer.jsx";
+import GameBoard from "./components/GameBoard.jsx";
+import Scoreboard from "./components/Scoreboard.jsx";
+import Rules from "./components/Rules.jsx";
 import trophyIcon from "./assets/icons/trophy-svgrepo-com.svg";
 import hintIcon from "./assets/icons/hint-svgrepo-com.svg";
 import "./App.css";
