@@ -61,6 +61,7 @@ export default function GameBoard({ setScore, validateCurrentScore }) {
       const BONUS = 5;
       const resetData = data.map((item) => ({ ...item, selected: false }));
 
+      // Validate the end of the game
       if (pokemon.selected) {
         setData(resetData);
         validateCurrentScore();
@@ -70,6 +71,7 @@ export default function GameBoard({ setScore, validateCurrentScore }) {
       const shuffledData = getShuffledData(data, pokemon);
       const allSelected = shuffledData.every((item) => item.selected);
 
+      // Check if all cards are selected, give Bonus and render new cards
       if (allSelected) {
         setScore((score) => score + BONUS);
         setData(resetData);
@@ -77,6 +79,7 @@ export default function GameBoard({ setScore, validateCurrentScore }) {
         return;
       }
 
+      // Otherwise, add score and shuffle the cards.
       setData(shuffledData);
       setScore((score) => score + 1);
     };
