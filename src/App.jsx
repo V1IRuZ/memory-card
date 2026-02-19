@@ -69,7 +69,7 @@ export default function App() {
       <header>
         <div className="container">
           <h1>Memory Card</h1>
-          <div className="score">
+          <div className="points">
             <span>Points:</span>
             <span>{score}</span>
           </div>

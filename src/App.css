@@ -94,7 +94,7 @@ header .container {
   transform: scale(1.1);
 }
 
-.score {
+.points {
   display: grid;
   grid-template-columns: 160px 50px;
   justify-content: center;
