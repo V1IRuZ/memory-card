@@ -42,7 +42,7 @@ export default function Score({ highScore, index, isActive, setActiveScoreId, se
           />
         </div>
       ) : (
-        <div className="placement">
+        <div className="record-holder">
           <img src={trophys[index]} alt="" />
           <h1>{highScore.name}</h1>
         </div>

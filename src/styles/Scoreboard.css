@@ -38,7 +38,7 @@
   text-overflow: ellipsis;
 }
 
-.placement {
+.record-holder {
   display: flex;
   align-items: center;
   gap: 16px;
