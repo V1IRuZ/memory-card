@@ -20,7 +20,7 @@
   padding: min(2%, 16px);
 }
 
-.record-item {
+.record {
   padding: 8px 16px;
   border-radius: 30px;
   background-color: var(--light-gray);
@@ -31,7 +31,7 @@
   min-width: fit-content;
 }
 
-.record-item h1 {
+.record h1 {
   padding-left: 8px;
   font-size: var(--dialog-font-size);
   overflow: hidden;
