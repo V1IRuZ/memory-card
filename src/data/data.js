@@ -77,8 +77,8 @@ const initialScores = [
   { name: "Jack", score: 51, id: crypto.randomUUID() },
   { name: "Anna", score: 32, id: crypto.randomUUID() },
   { name: "Mike", score: 24, id: crypto.randomUUID() },
-  { name: "Jessie", score: 22, id: crypto.randomUUID() },
-  { name: "Nick", score: 11, id: crypto.randomUUID() },
+  { name: "Jessie", score: 17, id: crypto.randomUUID() },
+  { name: "Nick", score: 5, id: crypto.randomUUID() },
 ];
 
 export { initialData, initialScores };
