@@ -5,11 +5,18 @@ dialog {
   --yellow: #f0c808;
   --blue: #086788;
   --focus-blue: #48cae4;
+  display: none;
   border-radius: 30px;
   width: min(100%, 800px);
   background-color: var(--dark);
   color: var(--yellow);
   text-shadow: var(--blue);
+  animation: vanish 0.4s;
+}
+
+dialog[open] {
+  display: block;
+  animation: appear 0.4s;
 }
 
 dialog::backdrop {
@@ -61,4 +68,30 @@ dialog::backdrop {
 .x-btn:focus-visible,
 .close-btn:focus-visible {
   border-color: var(--focus-blue);
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes vanish {
+  from {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    display: none;
+    opacity: 0;
+    transform: scale(0.5);
+  }
 }
