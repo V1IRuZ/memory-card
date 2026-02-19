@@ -17,7 +17,7 @@ export default function Score({ highScore, index, isActive, setActiveScoreId, se
   return (
     <li className="record-item">
       {isActive ? (
-        <div className="record">
+        <div className="new-record">
           <label htmlFor="">
             <input
               type="text"
