@@ -1,16 +1,9 @@
-# React + Vite
+# Memory Card
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a Memory Card game where the player selects a card, after which the cards are shuffled. The objective is to choose a card that has not been selected before. The game ends when the player selects a previously chosen card.
 
-Currently, two official plugins are available:
+The game also includes a simple leaderboard that tracks the best scores. These high scores are stored locally using the browser’s `localStorage`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The main purpose of this project was to practice fetching data from an external API using the React `useEffect` hook. Special attention was given to handling loading states and potential errors during the data fetching process.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The project uses the PokéAPI as the external data source for retrieving Pokémon data.
